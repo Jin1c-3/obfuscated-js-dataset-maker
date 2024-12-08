@@ -1,0 +1,30 @@
+{
+  "name": "obfuscated-js-dataset-maker",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "制作javascript混淆代码数据集",
+  "main": "index.js",
+  "scripts": {
+    "app": "npm run build && node dist/index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/Jin1c-3/obfuscated-js-dataset-maker"
+  },
+  "author": "Jin1c",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/js-beautify": "^1.14.3",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.1",
+    "tslint": "^5.20.1",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "globby": "^14.0.2",
+    "javascript-obfuscator": "^4.1.1",
+    "js-beautify": "^1.15.1",
+    "js-yaml": "^4.1.0"
+  }
+}

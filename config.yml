@@ -1,0 +1,19 @@
+path:
+  origin: origin_code
+  temp: preprocessed_code
+  final: obfuscated_code
+obfuscator: 
+  # - jsfuck
+  - data
+  - logic
+  - random
+  - encode
+  - trick
+  - preset-low
+  - preset-medium
+  - preset-high
+origin_source:
+  - name: xiaoyu2er-leetcode-js
+    url: https://github.com/xiaoyu2er/leetcode-js.git
+  - name: qianlongdoit-leetCode-js
+    url: https://github.com/qianlongdoit/leetCode-js.git

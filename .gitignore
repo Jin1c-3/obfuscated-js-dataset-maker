@@ -1,0 +1,6 @@
+dist
+node_modules
+origin_code/*
+preprocessed_code/*
+obfuscated_code/*
+.vscode
