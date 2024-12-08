@@ -1,8 +1,8 @@
 path:
-  origin: origin_code
-  temp: preprocessed_code
-  final: obfuscated_code
-obfuscator: 
+  origin: origin_code # 需要混淆的源码路径
+  temp: preprocessed_code # 预处理后的源码路径
+  final: obfuscated_code # 混淆代码路径
+obfuscator: # 混淆器种类，可以注释但不要新增
   # - jsfuck
   - data
   - logic
@@ -12,7 +12,7 @@ obfuscator:
   - preset-low
   - preset-medium
   - preset-high
-origin_source:
+origin_source: # 以name和url的形式添加源码仓库，name不能重复
   - name: xiaoyu2er-leetcode-js
     url: https://github.com/xiaoyu2er/leetcode-js.git
   - name: qianlongdoit-leetCode-js
