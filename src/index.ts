@@ -13,6 +13,9 @@ const { js_beautify } = js_beautify_pkg;
 import { globby } from "globby";
 // import { encode as JSFuck } from "./model/jsfuck.js";
 import JavaScriptObfuscator from "javascript-obfuscator";
+import { printDatasetStats } from "./statistics.js";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 async function makeDataset(origin: string, temp: string) {
   await fs.rm(temp, { recursive: true, force: true });
@@ -123,8 +126,39 @@ function getObfuscatorConfig(choice: string) {
 }
 
 async function main() {
-  await makeDataset(PathConfig.origin, PathConfig.temp);
+  const argv = await yargs(hideBin(process.argv))
+    .option("stats-only", {
+      type: "boolean",
+      description: "只运行统计功能",
+    })
+    .option("skip-clone", {
+      type: "boolean",
+      description: "跳过克隆源码步骤",
+    })
+    .help()
+    .parse();
+
+  if (argv["stats-only"]) {
+    await printDatasetStats(
+      PathConfig.final, 
+      ObfuscatorChoice,
+      PathConfig.origin,
+      PathConfig.temp
+    );
+    return;
+  }
+
+  if (!argv["skip-clone"]) {
+    await makeDataset(PathConfig.origin, PathConfig.temp);
+  }
+  
   await obfuscate(PathConfig.temp, PathConfig.final, ObfuscatorChoice);
+  await printDatasetStats(
+    PathConfig.final, 
+    ObfuscatorChoice,
+    PathConfig.origin,
+    PathConfig.temp
+  );
 }
 
 main();
